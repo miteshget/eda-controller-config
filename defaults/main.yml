@@ -1,31 +1,45 @@
 ---
 
-eda_controller_config_url: 
-eda_controller_config_username:
-eda_controller_config_password:
+eda_controller_config_url: <CHANGEME>
+eda_controller_config_username: <CHANGEME>
+eda_controller_config_password: <CHANGEME>
 
-eda_controller_config_credentials:
-  - name:
-    description:
-    username:
-    token:
-    credential_type:
+# eda_controller_config_credentials:
+#   - name:
+#     description:
+#     username:
+#     token:
+#     credential_type:
 
 eda_controller_config_decision_envs:
-  - name: ""
-    description: ""
-    project: ""
+  - name: "de-for-ocp"
+    description: "Decision Environment for OpenShift"
+    image_url: "quay.io/mitsharm/eda/de-for-ocp"
 
 eda_controller_config_projects:
-  - name: ""
-    description: ""
-    repo_url: ""
+  - name: "OpenShift events"
+    description: "Event-driven Ansible rulebooks"
+    repo_url: "https://github.com/miteshget/eda-test.git"
 
 eda_controller_config_rulebook_activations:
-  - name: "Test rulebook"
-    description: "Test rulebook"
-    project: "Test Project"
+  - name: "Patch Route"
+    description: "Patch OpenShift Routes"
+    project: "OpenShift events"
     rulebook: "patch_route.yml"
-    decision_env: de
-    restart_policy: always
+    decision_env: "de-for-ocp"
+    restart_policy: "always"
+    enabled: true
+  - name: "Resource Quota Set"
+    description: "Set Resource Quota on OpenShift namespace"
+    project: "OpenShift events"
+    rulebook: "resource_quota.yml"
+    decision_env: "de-for-ocp"
+    restart_policy: "always"
+    enabled: true
+  - name: "Create Volume Snapshot"
+    description: "Create PVC volume snapshot"
+    project: "OpenShift events"
+    rulebook: "volume_snapshot.yml"
+    decision_env: "de-for-ocp"
+    restart_policy: "always"
     enabled: true
