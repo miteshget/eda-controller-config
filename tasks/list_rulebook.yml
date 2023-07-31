@@ -1,0 +1,27 @@
+---
+- name: List Rulebooks
+  ansible.builtin.uri:
+    url: "{{ eda_controller_config_url }}/api/eda/v1/rulebooks/"
+    user: "{{ eda_controller_config_username }}"
+    password: "{{ eda_controller_config_password }}"
+    method: GET
+    force_basic_auth: true
+    validate_certs: false
+    body_format: json
+    status_code: 200
+  register: _r_list_rulebook
+
+- name: List Rulebooks
+  ansible.builtin.debug:
+    msg: "{{ _r_list_rulebook }}"
+    verbosity: 2
+
+- name: Find Rulebook ID
+  vars:
+    _query: '[?name == `{{ item.rulebook }}`].id'
+  ansible.builtin.set_fact:
+    _rulebook_id: "{{ _r_list_rulebook.json.results | json_query(_query) | join }}"
+
+- name: "Rulebook ID [{{ item.rulebook }}"
+  ansible.builtin.debug:
+    msg: "{{ _rulebook_id }}"

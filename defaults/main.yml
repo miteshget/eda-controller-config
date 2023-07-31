@@ -1,0 +1,31 @@
+---
+
+eda_controller_config_url: 
+eda_controller_config_username:
+eda_controller_config_password:
+
+eda_controller_config_credentials:
+  - name:
+    description:
+    username:
+    token:
+    credential_type:
+
+eda_controller_config_decision_envs:
+  - name: ""
+    description: ""
+    project: ""
+
+eda_controller_config_projects:
+  - name: ""
+    description: ""
+    repo_url: ""
+
+eda_controller_config_rulebook_activations:
+  - name: "Test rulebook"
+    description: "Test rulebook"
+    project: "Test Project"
+    rulebook: "patch_route.yml"
+    decision_env: de
+    restart_policy: always
+    enabled: true
