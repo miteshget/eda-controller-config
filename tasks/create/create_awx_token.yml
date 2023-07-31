@@ -1,4 +1,8 @@
 ---
+- name: Set up display
+  set_fact:
+    used_for: "AWX Token"
+
 - name: Find credential id
   ansible.builtin.include_tasks: list/list_awx_token.yml
   vars:

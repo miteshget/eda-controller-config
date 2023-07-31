@@ -1,5 +1,5 @@
 ---
-- name: List Rulebooks
+- name: "[{{ used_for | d('') }}] Fetch Rulebooks"
   ansible.builtin.uri:
     url: "{{ eda_controller_config_url }}/api/eda/v1/rulebooks/"
     user: "{{ eda_controller_config_username }}"

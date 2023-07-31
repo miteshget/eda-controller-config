@@ -1,5 +1,5 @@
 ---
-- name: List Tokens
+- name: "[{{ used_for | d('') }}] Fetch Tokens"
   ansible.builtin.uri:
     url: "{{ eda_controller_config_url }}/api/eda/v1/users/me/awx-tokens/"
     user: "{{ eda_controller_config_username }}"

@@ -1,4 +1,8 @@
 ---
+- name: Set up display
+  set_fact:
+    used_for: "Rulebook Activation"
+
 - name: Find decision_env id
   ansible.builtin.include_tasks: list/list_decision_env.yml
   vars:

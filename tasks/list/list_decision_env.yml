@@ -1,5 +1,5 @@
 ---
-- name: List Decision Environments
+- name: "[{{ used_for | d('') }}] Fetch Decision Environments"
   ansible.builtin.uri:
     url: "{{ eda_controller_config_url }}/api/eda/v1/decision-environments/"
     user: "{{ eda_controller_config_username }}"

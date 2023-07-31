@@ -1,4 +1,8 @@
 ---
+- name: Set up display
+  set_fact:
+    used_for: "Decision Environment"
+
 - name: Find project id
   when: item.credential is defined
   ansible.builtin.include_tasks: list/list_credential.yml

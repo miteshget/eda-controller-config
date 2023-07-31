@@ -1,5 +1,5 @@
 ---
-- name: List Projects
+- name: "[{{ used_for | d('') }}] Fetch Projects"
   ansible.builtin.uri:
     url: "{{ eda_controller_config_url }}/api/eda/v1/projects/"
     user: "{{ eda_controller_config_username }}"
