@@ -2,7 +2,7 @@
 - name: Find credential id
   ansible.builtin.include_tasks: list/list_awx_token.yml
   vars:
-    credential_name: "{{ item.name }}"
+    awx_token_name: "{{ item.name }}"
 
 - name: Create EDA AWX Token
   when: _credential_id | length == 0
