@@ -1,6 +1,8 @@
 ---
 - name: Find project id
   ansible.builtin.include_tasks: list_project.yml
+  vars:
+    project_name: "{{ item.name }}"
 
 - name: Create EDA Project
   when: _project_id | length == 0

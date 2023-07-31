@@ -18,10 +18,10 @@
 
 - name: Find Rulebook ID
   vars:
-    _query: '[?name == `{{ item.rulebook }}`].id'
+    _query: '[?name == `{{ rulebook_name }}`].id'
   ansible.builtin.set_fact:
     _rulebook_id: "{{ _r_list_rulebook.json.results | json_query(_query) | join }}"
 
-- name: "Rulebook ID [{{ item.rulebook }}"
+- name: "Rulebook ID [{{ rulebook_name }}"
   ansible.builtin.debug:
     msg: "{{ _rulebook_id }}"

@@ -6,12 +6,18 @@
 
 - name: Find project id
   ansible.builtin.include_tasks: list_project.yml
+  vars:
+    project_name: "{{ item.name }}"
 
 - name: Find rulebook id
   ansible.builtin.include_tasks: list_rulebook.yml
+  vars:
+    rulebook_name: "{{ item.rulebook }}"
 
 - name: Find activation id
   ansible.builtin.include_tasks: list_activation.yml
+  vars:
+    rulebook_activation_name: "{{ item.name }}"
 
 - name: Create Rulebook Activation
   when:

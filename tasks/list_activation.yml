@@ -18,10 +18,10 @@
 
 - name: Find Activation ID
   vars:
-    _query: '[?name == `{{ item.name }}`].id'
+    _query: '[?name == `{{ rulebook_activation_name }}`].id'
   ansible.builtin.set_fact:
     _activation_id: "{{ _r_list_activation.json.results | json_query(_query) | join }}"
 
-- name: "Activation ID [{{ item.activation }}] "
+- name: "Activation ID [{{ rulebook_activation_name }}] "
   ansible.builtin.debug:
     msg: "{{ _activation_id }}"
