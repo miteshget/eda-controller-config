@@ -6,7 +6,7 @@
 
 - name: Create Decision Environment
   when:
-    - _decsiion_env_id | length == 0
+    - _decision_env_id | length == 0
   ansible.builtin.uri:
     url: "{{ eda_controller_config_url }}/api/eda/v1/decision-environments/"
     user: "{{ eda_controller_config_username }}"
