@@ -1,6 +1,8 @@
 ---
 - name: Find decision_env id
   ansible.builtin.include_tasks: list_decision_env.yml
+  vars:
+    decision_env_name: "{{ item.name }}"
 
 - name: Create Decision Environment
   when:

@@ -18,10 +18,10 @@
 
 - name: Find decision env id
   vars:
-    _query: '[?name == `{{ item.decision_env }}`].id'
+    _query: '[?name == `{{ decision_env_name }}`].id'
   ansible.builtin.set_fact:
     _decision_env_id: "{{ _r_list_de.json.results | json_query(_query) | join }}"
 
-- name: "Decision Env ID [{{ item.decision_env }}]"
+- name: "Decision Env ID [{{ decision_env_name }}]"
   ansible.builtin.debug:
     msg: "{{ _decision_env_id }}"
