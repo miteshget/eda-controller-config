@@ -18,10 +18,10 @@
 
 - name: Find Token ID
   vars:
-    _query: '[?name == `{{ rulebook_token_name }}`].id'
+    _query: '[?name == `{{ awx_token_name }}`].id'
   ansible.builtin.set_fact:
     _token_id: "{{ _r_list_token.json.results | json_query(_query) | join }}"
 
-- name: "Token ID [{{ rulebook_token_name }}] "
+- name: "Token ID [{{ awx_token_name }}] "
   ansible.builtin.debug:
     msg: "{{ _token_id }}"
