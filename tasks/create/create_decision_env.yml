@@ -1,6 +1,12 @@
 ---
+- name: Find project id
+  when: item.credential is defined
+  ansible.builtin.include_tasks: list/list_credential.yml
+  vars:
+    credential_name: "{{ item.credential }}"
+
 - name: Find decision_env id
-  ansible.builtin.include_tasks: list_decision_env.yml
+  ansible.builtin.include_tasks: list/list_decision_env.yml
   vars:
     decision_env_name: "{{ item.name }}"
 
@@ -20,5 +26,8 @@
       {
         "name": "{{ item.name }}",
         "description": "{{ item.description | default(item.name) }}",
+        {%if item.credential is defined %}
+        "credential_id": "{{ _credential_id }}", 
+        {%endif%}
         "image_url": "{{ item.image_url }}"
       }

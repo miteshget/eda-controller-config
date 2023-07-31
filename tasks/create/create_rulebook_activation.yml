@@ -1,21 +1,21 @@
 ---
 - name: Find decision_env id
-  ansible.builtin.include_tasks: list_decision_env.yml
+  ansible.builtin.include_tasks: list/list_decision_env.yml
   vars:
     decision_env_name: "{{ item.decision_env }}"
 
 - name: Find project id
-  ansible.builtin.include_tasks: list_project.yml
+  ansible.builtin.include_tasks: list/list_project.yml
   vars:
     project_name: "{{ item.project }}"
 
 - name: Find rulebook id
-  ansible.builtin.include_tasks: list_rulebook.yml
+  ansible.builtin.include_tasks: list/list_rulebook.yml
   vars:
     rulebook_name: "{{ item.rulebook }}"
 
 - name: Find activation id
-  ansible.builtin.include_tasks: list_activation.yml
+  ansible.builtin.include_tasks: list/list_activation.yml
   vars:
     rulebook_activation_name: "{{ item.name }}"
 
