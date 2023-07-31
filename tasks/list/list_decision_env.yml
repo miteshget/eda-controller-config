@@ -11,7 +11,7 @@
     status_code: 200
   register: _r_list_de
 
-- name: List decision environments
+- name: "[{{ used_for | d('') }}] List decision environments"
   ansible.builtin.debug:
     msg: "{{ _r_list_de.json.results }}"
     verbosity: 2
@@ -22,6 +22,6 @@
   ansible.builtin.set_fact:
     _decision_env_id: "{{ _r_list_de.json.results | json_query(_query) | join }}"
 
-- name: "Decision Env ID [{{ decision_env_name }}]"
+- name: "[{{ used_for | d('') }}] Decision Env ID"
   ansible.builtin.debug:
     msg: "{{ _decision_env_id }}"

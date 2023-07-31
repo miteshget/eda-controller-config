@@ -11,7 +11,7 @@
     status_code: 200
   register: _r_list_project
 
-- name: List projects
+- name: "[{{ used_for | d('') }}] List projects"
   ansible.builtin.debug:
     msg: "{{ _r_list_project }}"
     verbosity: 2
@@ -22,6 +22,6 @@
   ansible.builtin.set_fact:
     _project_id: "{{ _r_list_project.json.results | json_query(_query) | join }}"
 
-- name: "Project ID [{{ project_name }}]"
+- name: "[{{ used_for | d('') }}] Project ID"
   ansible.builtin.debug:
     msg: "{{ _project_id }}"

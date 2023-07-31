@@ -11,17 +11,17 @@
     status_code: 200
   register: _r_list_token
 
-- name: List Tokens
+- name: "[{{ used_for | d('') }}] List Tokens"
   ansible.builtin.debug:
     msg: "{{ _r_list_token }}"
     verbosity: 2
 
-- name: Find Token ID
+- name: "[{{ used_for | d('') }}] Find Token ID"
   vars:
     _query: '[?name == `{{ awx_token_name }}`].id'
   ansible.builtin.set_fact:
     _token_id: "{{ _r_list_token.json.results | json_query(_query) | join }}"
 
-- name: "Token ID [{{ awx_token_name }}] "
+- name: "[{{ used_for | d('') }}] Token ID"
   ansible.builtin.debug:
     msg: "{{ _token_id }}"

@@ -11,7 +11,7 @@
     status_code: 200
   register: _r_list_rulebook
 
-- name: List Rulebooks
+- name: "[{{ used_for | d('') }}] List Rulebooks"
   ansible.builtin.debug:
     msg: "{{ _r_list_rulebook }}"
     verbosity: 2
@@ -22,6 +22,6 @@
   ansible.builtin.set_fact:
     _rulebook_id: "{{ _r_list_rulebook.json.results | json_query(_query) | join }}"
 
-- name: "Rulebook ID [{{ rulebook_name }}"
+- name: "[{{ used_for | d('') }}] Rulebook ID"
   ansible.builtin.debug:
     msg: "{{ _rulebook_id }}"
